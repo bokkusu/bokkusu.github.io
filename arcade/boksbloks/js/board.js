@@ -69,6 +69,9 @@ function init() {
    offsetX = (canvasW - drawW)/2;
    offsetY = (canvasH - drawH)/2;
    
+   var tesX = drawW / board[0].length;
+   hex = new Hex((tesX/2)/(Math.sin(Math.PI/3)));
+   
    console.log("canvasW=" + canvasW);
    console.log("canvasH=" + canvasH);
    console.log("drawW=" + drawW);
@@ -109,35 +112,6 @@ function drawText(context, board, coords, xOffset, yOffset, color, line, fill, m
       context.fillText(msg, curX-10, curY-12);
 }
 
-function drawCircle2(context, board, coords, xOffset, yOffset, color, line, fill, scale) {
-   var curX, curY;
-   
-   curX = xOffset + hex.b + coords[0] * hex.tesslenx;
-   curY = yOffset + hex.sidelen + coords[1] * hex.tessleny;
-   
-   if (coords[1] % 2 == 1) {
-      curX += hex.b;
-   }
-   var myScale = scale || 1;
-   drawCircle(context, color, curX, curY, hex.b * myScale, 4, fill);
-}
-
-
-function drawCellSmall(context, board, coords, xOffset, yOffset, color, line, fill, scale) {
-   var curX, curY;
-   
-   curX = xOffset + hex.b + coords[0] * hex.tesslenx;
-   curY = yOffset + hex.sidelen + coords[1] * hex.tessleny;
-   
-   var myScale = scale || 0.8;
-   
-   if (coords[1] % 2 == 1) {
-      curX += hex.b;
-   }
-   var smHex = new Hex(hex.sidelen * myScale);
-   drawHex(context, color, curX, curY, smHex, line, fill);
-}
-
 function drawBoard(context, board, xOffset, yOffset) {
    for (var j = 0; j < board.length; j++) {
       for (var i = 0; i < board[j].length; i++) {
@@ -146,106 +120,6 @@ function drawBoard(context, board, xOffset, yOffset) {
         if (debug) {
           drawText(context, board, [i, j], xOffset, yOffset, color, 1, false, "" + i + "," + j + ":" + board[j][i]);
         }
-      }
-   }
-}
-
-function drawBoard2(context, board, xOffset, yOffset) {
-   for (var j = 0; j < board.length; j++) {
-      for (var i = 0; i < board[j].length; i++) {
-         var curX, curY;
-         
-         curX = xOffset + hex.b + i * hex.tesslenx;
-         curY = yOffset + hex.sidelen + j * hex.tessleny;
-
-         if (j % 2 == 1) {
-            curX += hex.b;
-         }
-         
-         if (debug) {
-            context.fillStyle = "#DDDDDD";
-            //context.fillStyle = "#FEEFFE";
-            context.font = "8pt Arial";
-            context.fillText("" + i + "," + j + ":" + board[j][i], curX-10, curY-12);
-         }
-         
-         //context.fillStyle = "#FEEFFE";
-         //context.font = "8pt Arial";
-         //context.fillText("" + board[j][i], curX-4, curY+3);
-         
-         if (board[j][i] === 0) {
-            drawHex(context, "lightgray", curX, curY, hex);
-         }
-         else if (board[j][i] == 1) {
-            drawHex(context, 'cyan', curX, curY, hex);
-            var smHex = new Hex(hex.sidelen * 0.8);
-            drawHex(context, 'cyan', curX, curY, smHex);
-         }
-         
-         else if (board[j][i] == 2) {
-            drawHex(context, 'darkkhaki', curX, curY, hex);
-            var smHex = new Hex(hex.sidelen * 0.8);
-            drawHex(context, 'darkkhaki', curX, curY, smHex);
-            smHex = new Hex(hex.sidelen * 0.6);
-            drawHex(context, 'darkkhaki', curX, curY, smHex);
-         }
-         else if (board[j][i] == 3) {
-            drawHex(context, 'greenyellow', curX, curY, hex);
-            var smHex = new Hex(hex.sidelen * 0.8);
-            drawHex(context, 'greenyellow', curX, curY, smHex);
-            smHex = new Hex(hex.sidelen * 0.6);
-            drawHex(context, 'greenyellow', curX, curY, smHex);
-            smHex = new Hex(hex.sidelen * 0.4);
-            drawHex(context, 'greenyellow', curX, curY, smHex);
-         }
-         else if (board[j][i] == 'A') {
-            drawHex(context, 'cyan', curX, curY, hex);
-         }
-      }
-   }
-   
-   for (var j = 0; j < board.length; j++) {
-      for (var i = 0; i < board[j].length; i++) {
-         
-         if (board[j][i] == 0) continue;
-         
-         var curX, curY;
-         
-         curX = xOffset + hex.b + i * hex.tesslenx;
-         curY = yOffset + hex.sidelen + j * hex.tessleny;
-
-         if (j % 2 == 1) {
-            curX += hex.b;
-         }
-         
-         if (board[j][i] === 0) {
-            drawHex(context, "#EEEEEE", curX, curY, hex);
-         }
-         else if (board[j][i] == 1) {
-            drawHex(context, 'cyan', curX, curY, hex);
-            var smHex = new Hex(hex.sidelen * 0.8);
-            drawHex(context, 'cyan', curX, curY, smHex);
-         }
-         
-         else if (board[j][i] == 2) {
-            drawHex(context, 'darkkhaki', curX, curY, hex);
-            var smHex = new Hex(hex.sidelen * 0.8);
-            drawHex(context, 'darkkhaki', curX, curY, smHex);
-            smHex = new Hex(hex.sidelen * 0.6);
-            drawHex(context, 'darkkhaki', curX, curY, smHex);
-         }
-         else if (board[j][i] == 3) {
-            drawHex(context, 'greenyellow', curX, curY, hex);
-            var smHex = new Hex(hex.sidelen * 0.8);
-            drawHex(context, 'greenyellow', curX, curY, smHex);
-            smHex = new Hex(hex.sidelen * 0.6);
-            drawHex(context, 'greenyellow', curX, curY, smHex);
-            smHex = new Hex(hex.sidelen * 0.4);
-            drawHex(context, 'greenyellow', curX, curY, smHex);
-         }
-         else if (board[j][i] == 'A') {
-            drawHex(context, 'cyan', curX, curY, hex);
-         }
       }
    }
 }

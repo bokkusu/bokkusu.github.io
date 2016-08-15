@@ -70,8 +70,10 @@ function init() {
    console.log("board[0].length=" + board[0].length);
    
    board = new Array(20);
-   
-   board.forEach(function (entry) { entry = new Array(10)});
+   for (var i = 0; i < board.length; ++i)
+   {
+      board[i] = new Array(10);
+   }
 }
 
 function redraw() {

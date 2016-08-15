@@ -61,7 +61,10 @@ function init() {
    offsetY = (canvasH - drawH)/2;
    
    board = new Array(20);
-   board.forEach(function(item) { item = new Array(10);});
+   for (var i = 0; i < board.length; ++i)
+   {
+      board[i] = new Array(10);
+   }
 
    var tesX = drawW / board[0].length;
    hex = new Hex((tesX/2)/(Math.sin(Math.PI/3)));

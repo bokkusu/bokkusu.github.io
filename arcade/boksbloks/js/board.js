@@ -13,7 +13,7 @@ var selected = null;
 
 canvas.addEventListener('click', clickHandler);
 canvas.onmousedown = function(){return false;};
-canvas.onmousemove = over;
+canvas.onmousemove = function(){return false;};
 
 var dirty = [];
 

@@ -74,6 +74,14 @@ function init() {
    {
       board[i] = new Array(10);
    }
+   
+   for (var i = 0; i < board.length; ++i)
+   {
+      for (var j = 0; j < board[i].length; ++j)
+      {
+         board[i][j] = (i + j) % 2;
+      }
+   }
 }
 
 function redraw() {

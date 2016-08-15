@@ -27,7 +27,6 @@ function clickHandler(event) {
    var x = event.pageX - canvas.offsetLeft,
        y = event.pageY - canvas.offsetTop;
    if (debug) console.log("clicked: " + x + ", " + y);
-   }
    //redraw();
 }
 
@@ -80,7 +79,6 @@ function init() {
 }
 
 function redraw() {
-   console.log("redraw");
    canvas.width = canvas.width;
    drawBoard(context, board, offsetX, offsetY);
 }

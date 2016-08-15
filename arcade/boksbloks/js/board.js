@@ -80,6 +80,7 @@ function init() {
 }
 
 function redraw() {
+   console.log("redraw");
    canvas.width = canvas.width;
    drawBoard(context, board, offsetX, offsetY);
 }

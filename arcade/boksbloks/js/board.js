@@ -1,13 +1,5 @@
 var hex = null;
-var board =
-[[1,1,1,1,1,1,1,1],
-  [1,1,1,1,1,1,1,1],
- [1,1,"A",1,1,1,1,1],
-  [1,1,1,1,1,1,1,1],
- [1,1,1,1,1,1,1,1],
-  [1,1,1,1,1,1,1,1],
- [1,1,1,1,1,1,1,1],
-  [1,1,1,1,1,1,1,1]];
+var board = [[]];
 
 var selected = null;
 
@@ -76,6 +68,10 @@ function init() {
    console.log("drawW=" + drawW);
    console.log("drawH=" + drawH);
    console.log("board[0].length=" + board[0].length);
+   
+   board = new Array(20);
+   
+   board.forEach(function (entry) { entry = new Array(10)});
 }
 
 function redraw() {

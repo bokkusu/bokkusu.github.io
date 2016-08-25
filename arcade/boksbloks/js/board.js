@@ -96,7 +96,7 @@ function drawCell(context, board, coords, xOffset, yOffset, color, line, fill) {
    curX = xOffset + coords[0] * square.sidelen;
    curY = yOffset + coords[1] * square.sidelen;
    
-   drawSquare(context, color, curX, curY, hex, line, fill);
+   drawSquare(context, color, curX, curY, square, line, fill);
 }
 
 function drawText(context, board, coords, xOffset, yOffset, color, line, fill, msg) {

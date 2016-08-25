@@ -1,4 +1,4 @@
-var hex = null;
+var square = null;
 var board = [[]];
 
 var selected = null;
@@ -67,7 +67,7 @@ function init() {
    }
 
    var tesX = drawW / board[0].length;
-   hex = new Hex((tesX/2)/(Math.sin(Math.PI/3)));
+   square = new Square(tesX/2);
    
    console.log("canvasW=" + canvasW);
    console.log("canvasH=" + canvasH);
@@ -93,14 +93,10 @@ function redraw() {
 function drawCell(context, board, coords, xOffset, yOffset, color, line, fill) {
    var curX, curY;
    
-   curX = xOffset + hex.b + coords[0] * hex.tesslenx;
-   curY = yOffset + hex.sidelen + coords[1] * hex.tessleny;
+   curX = xOffset + coords[0] * square.sidelen;
+   curY = yOffset + coords[1] * square.sidelen;
    
-   if (coords[1] % 2 == 1) {
-      curX += hex.b;
-   }
-   
-   drawHex(context, color, curX, curY, hex, line, fill);
+   drawSquare(context, color, curX, curY, hex, line, fill);
 }
 
 function drawText(context, board, coords, xOffset, yOffset, color, line, fill, msg) {
@@ -167,6 +163,34 @@ function drawHex(context, color, x, y, hex, line, fill) {
       context.fillStyle = color;
       context.fill();
    }
+}
+
+function drawSquare(context, color, x, y, square, line, fill) {
+   context.strokeStyle = color;
+   context.lineWidth = line || 1;
+   
+   var curx = x-square.sidelen/2;
+   var cury = y-square.sidelen/2;
+
+   context.beginPath();
+   context.moveTo(curx, cury);
+   context.lineTo(curx+=square.sidelen, cury);
+   context.lineTo(curx, cury+=square.sidelen);
+   context.lineTo(curx-=square.sidelen, cury);
+   context.lineTo(curx, cury-=square.sidelen);
+   context.closePath();
+   context.stroke();
+   
+   if (fill) {
+      context.fillStyle = color;
+      context.fill();
+   }
+}
+function Square(sidelen)
+{
+   this.sidelen = sidelen;
+   this.lineWidth = 1;
+   this.sidelen = this.sidelen - this.lineWidth;
 }
 
 function Hex(sidelen)

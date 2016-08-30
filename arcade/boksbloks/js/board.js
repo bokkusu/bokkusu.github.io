@@ -75,12 +75,12 @@ function init() {
    console.log("drawH=" + drawH);
    console.log("board[0].length=" + board[0].length);
    
-   
+   var n = 0;
    for (var i = 0; i < board.length; ++i)
    {
       for (var j = 0; j < board[i].length; ++j)
       {
-         board[i][j] = (i + j) % 2;
+         board[i][j] = ++n % 8;
       }
    }
 }
@@ -117,7 +117,39 @@ function drawText(context, board, coords, xOffset, yOffset, color, line, fill, m
 function drawBoard(context, board, xOffset, yOffset) {
    for (var j = 0; j < board.length; j++) {
       for (var i = 0; i < board[j].length; i++) {
-        drawCell(context, board, [i, j], xOffset, yOffset, 'lightgrey', 1, false);
+         var color = '#000000';
+         var fill = true;
+
+         switch(board[i][j])
+         {
+            case 0:
+               color = 'lightgrey';
+               fill = false;
+               break;
+            case 1:
+               color = '#90C3D4';
+               break;
+            case 2:
+               color = '#59B9D9';
+               break;
+            case 3:
+               color = '#21ADDB';
+               break;
+            case 4:
+               color = '#1A89AD';
+               break;
+            case 5:
+               color = '#3892B0';
+               break;
+            case 6:
+               color = '#5B9DB3';
+               break;
+            case 6:
+               color = '#45788A';
+               break;
+         }
+        var color = 'lightgrey';
+        drawCell(context, board, [i, j], xOffset, yOffset, color, 1, fill);
         //print text
         if (debug) {
           drawText(context, board, [i, j], xOffset, yOffset, color, 1, false, "" + i + "," + j + ":" + board[j][i]);

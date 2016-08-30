@@ -1,5 +1,6 @@
 var piece = null;
 var pieceXY = [0,0];
+var lastUpdate = new Date().getTime();
 var lastFrame = new Date().getTime();
 
 
@@ -10,7 +11,13 @@ window.main = function () {
   
   // Whatever your main loop needs to do.
   update();
-  redraw();
+  
+  var curTime = new Date().getTime();
+  
+  if ((curTime - lastFrame) > 16) {
+    redraw();
+    lastFrame = curTime;
+  }
 };
 
 main(); //Start the cycle.
@@ -18,10 +25,11 @@ main(); //Start the cycle.
 function update() {
   var curTime = new Date().getTime();
   
-  if (curTime - lastFrame < 500) {
+  if ((curTime - lastUpdate) < 500) {
     return;
   }
-  lastFrame = curTime;
+
+  lastUpdate = curTime;
   if (piece == null) {
     piece = getPiece();
     pieceXY = [3,0];

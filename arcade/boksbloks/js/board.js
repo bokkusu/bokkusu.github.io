@@ -77,7 +77,7 @@ function init() {
       {
          if (j == 0)
          {
-            board[i][j] = [];
+            board[i] = [];
          }
 
          board[i][j] = ++n % 8;

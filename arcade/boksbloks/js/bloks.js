@@ -1,5 +1,7 @@
 var piece = null;
 var pieceXY = [0,0];
+var lastFrame = new Date().getTime();
+
 
 // https://developer.mozilla.org/en-US/docs/Games/Anatomy
 
@@ -13,9 +15,13 @@ window.main = function () {
 
 main(); //Start the cycle.
 
-
-
 function update() {
+  var curTime = var d = new Date().getTime();
+  
+  if (curTime - lastFrame < 16) {
+    return;
+  }
+  
   if (piece == null) {
     piece = getPiece();
     pieceXY = [3,0];
@@ -33,12 +39,18 @@ function update() {
     y = y + 1;
     pieceXY = [x,y];
 
-    for (var j = 0; j < piece.length; ++j) {
-      for (var i = 0; i < piece[j].length; ++i) {
-        board[y+i][x+j] = 1;
+    if ((y + piece[0].length) < board[0].length)
+    {
+      for (var j = 0; j < piece.length; ++j) {
+        for (var i = 0; i < piece[j].length; ++i) {
+          board[y+i][x+j] = 1;
+        }
       }
     }
-
+    else
+    {
+      piece = null;
+    }
   }
 }
 

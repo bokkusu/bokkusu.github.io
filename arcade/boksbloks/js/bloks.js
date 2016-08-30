@@ -30,6 +30,7 @@ function update() {
   }
 
   lastUpdate = curTime;
+  
   if (piece == null) {
     piece = getPiece();
     pieceXY = [3,0];
@@ -38,17 +39,21 @@ function update() {
     var x = pieceXY[0];
     var y = pieceXY[1];
 
-    for (var j = 0; j < piece.length; ++j) {
-      for (var i = 0; i < piece[j].length; ++i) {
-        board[y+i][x+j] = 0;
-      }
-    }
-
     y = y + 1;
     pieceXY = [x,y];
 
     if ((y + piece.length) < board.length)
     {
+      y = y - 1;
+    
+      for (var j = 0; j < piece.length; ++j) {
+        for (var i = 0; i < piece[j].length; ++i) {
+          board[y+j][x+i] = 0;
+        }
+      }
+      
+      y = y + 1;
+    
       for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {
           if (piece[j][i] != 0)

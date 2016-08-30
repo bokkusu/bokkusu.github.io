@@ -55,10 +55,10 @@ function getPiece() {
   }
 }
 
-function zpiece { return  [[1,1,0],[0,1,1]];}
-function spiece { return  [[0,1,1],[1,1,0]];}
-function lpiece { return  [[0,0,1],[1,1,1]];}
-function jpiece { return  [[1,0,0],[1,1,1]];}
-function opiece { return  [[1,1],[1,1]];}
-function ipiece { return  [[1,1,1,1]];}
-function tpiece { return  [[0,1,0],[1,1,1]];}
+function zpiece() { return  [[1,1,0],[0,1,1]];}
+function spiece() { return  [[0,1,1],[1,1,0]];}
+function lpiece() { return  [[0,0,1],[1,1,1]];}
+function jpiece() { return  [[1,0,0],[1,1,1]];}
+function opiece() { return  [[1,1],[1,1]];}
+function ipiece() { return  [[1,1,1,1]];}
+function tpiece() { return  [[0,1,0],[1,1,1]];}

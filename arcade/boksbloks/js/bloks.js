@@ -47,6 +47,7 @@ function update() {
       for (var i = 0; i < piece[j].length; ++i) {
         if (piece[j][i] != 0 && board[y+j][x+i] != 0)
         {
+          console.log("piece blocked");
           blocked = true;
           break loop1;
         }

@@ -1,3 +1,6 @@
+var piece = null;
+var pieceXY = [0,0];
+
 // https://developer.mozilla.org/en-US/docs/Games/Anatomy
 
 window.main = function () {
@@ -10,8 +13,7 @@ window.main = function () {
 
 main(); //Start the cycle.
 
-piece = null;
-pieceXY = [0,0];
+
 
 function update() {
   if (piece == null) {

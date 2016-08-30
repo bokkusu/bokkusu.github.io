@@ -21,7 +21,7 @@ function update() {
   if (curTime - lastFrame < 500) {
     return;
   }
-  
+  lastFrame = curTime;
   if (piece == null) {
     piece = getPiece();
     pieceXY = [3,0];

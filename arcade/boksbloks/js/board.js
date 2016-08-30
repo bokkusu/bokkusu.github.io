@@ -133,7 +133,7 @@ function drawText(context, board, coords, xOffset, yOffset, color, line, fill, m
 function drawBoard(context, board, xOffset, yOffset) {
    for (var j = 0; j < board.length; j++) {
       for (var i = 0; i < board[j].length; i++) {
-         var color = '#000000';
+         var color = 'lightgrey';
          var fill = true;
 console.log("i,j=" + i + "," + j + "=" + board[i][j]);
          switch(board[i][j])
@@ -160,7 +160,7 @@ console.log("i,j=" + i + "," + j + "=" + board[i][j]);
             case 6:
                color = '#5B9DB3';
                break;
-            case 6:
+            case 7:
                color = '#45788A';
                break;
          }

@@ -76,9 +76,9 @@ function init() {
    console.log("board[0].length=" + board[0].length);
    
    var n = 0;
-   for (var i = 0; i < board.length; ++i)
+   for (var j = 0; j < board.length; ++j)
    {
-      for (var j = 0; j < board[i].length; ++j)
+      for (var i = 0; i < board[j].length; ++i)
       {
          board[i][j] = ++n % 8;
       }

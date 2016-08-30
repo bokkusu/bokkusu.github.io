@@ -16,7 +16,7 @@ window.main = function () {
 main(); //Start the cycle.
 
 function update() {
-  var curTime = var d = new Date().getTime();
+  var curTime = new Date().getTime();
   
   if (curTime - lastFrame < 500) {
     return;

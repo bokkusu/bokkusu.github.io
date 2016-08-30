@@ -186,6 +186,7 @@ function drawSquare(context, color, x, y, square, line, fill) {
       context.fill();
    }
 }
+
 function Square(sidelen)
 {
    this.sidelen = sidelen;

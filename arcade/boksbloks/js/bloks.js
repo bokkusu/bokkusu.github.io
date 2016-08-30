@@ -42,7 +42,7 @@ function update() {
     y = y + 1;
     pieceXY = [x,y];
 
-    if ((y + piece.length) < board.length)
+    if ((y + piece.length) <= board.length)
     {
       y = y - 1;
     

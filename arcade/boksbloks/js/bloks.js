@@ -31,11 +31,38 @@ function update() {
 
   lastUpdate = curTime;
   
+  //check for line clear
+  var clearedRows = [];
+  
+  for (var j = 0; j < board.length; ++j) {
+    var hasSpace = false;
+    for (var i = 0; i < board[j].length; ++i) {
+      if (board[j][i] == 0)
+      {
+        hasSpace = true;
+        break;
+      }
+    }
+    if (!hasSpace)
+    {
+      //row j should clear
+      clearedRows[clearedRows.length] = j;
+    }
+  }
+  
+  for (var j = 0; j < clearedRows.length; ++j)
+  {
+    for (var i = 0; i < board[j].length; ++i)
+    {
+      board[j][i] = 0;
+    }
+  }
+  
   if (piece == null) {
     piece = getPiece();
     
-  var min = Math.ceil(0);
-  var max = Math.floor(7);
+    var min = Math.ceil(0);
+    var max = Math.floor(7);
   
   
     pieceXY = [Math.floor(Math.random() * (max - min)) + min,0];

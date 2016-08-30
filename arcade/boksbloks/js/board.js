@@ -88,6 +88,19 @@ function init() {
 function redraw() {
    canvas.width = canvas.width;
    drawBoard(context, board, offsetX, offsetY);
+   outputBoard();
+}
+
+function outputBoard() {
+   var out = "";
+   for (var j = 0; j < board.length; j++) {
+      for (var i = 0; i < board[j].length; i++) {
+         out += board[i][j];
+         out += ' ';
+      }
+      out += '\n';
+   }
+   console.log(out);
 }
 
 function drawCell(context, board, coords, xOffset, yOffset, color, line, fill) {

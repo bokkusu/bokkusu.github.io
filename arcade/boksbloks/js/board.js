@@ -150,7 +150,7 @@ function drawBoard(context, board, xOffset, yOffset) {
       for (var i = 0; i < board[j].length; i++) {
          var color = 'lightgrey';
          var fill = true;
-         switch(board[i][j])
+         switch(board[j][i])
          {
             case 0:
                color = 'lightgrey';

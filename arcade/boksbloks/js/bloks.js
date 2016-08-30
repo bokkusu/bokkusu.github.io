@@ -25,7 +25,7 @@ main(); //Start the cycle.
 function update() {
   var curTime = new Date().getTime();
   
-  if ((curTime - lastUpdate) < 500) {
+  if ((curTime - lastUpdate) < 70) {
     return;
   }
 
@@ -33,7 +33,12 @@ function update() {
   
   if (piece == null) {
     piece = getPiece();
-    pieceXY = [3,0];
+    
+  var min = Math.ceil(0);
+  var max = Math.floor(7);
+  
+  
+    pieceXY = [Math.floor(Math.random() * (max - min)) + min,0];
   }
   else {
     var x = pieceXY[0];

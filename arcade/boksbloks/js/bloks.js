@@ -26,7 +26,7 @@ function update() {
 
     for (var j = 0; j < piece.length; ++j) {
       for (var i = 0; i < piece[j].length; ++i) {
-        board[x+i][y+j] = 0;
+        board[y+i][x+j] = 0;
       }
     }
 
@@ -35,7 +35,7 @@ function update() {
 
     for (var j = 0; j < piece.length; ++j) {
       for (var i = 0; i < piece[j].length; ++i) {
-        board[x+i][y+j] = 1;
+        board[y+i][x+j] = 1;
       }
     }
 

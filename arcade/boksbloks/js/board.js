@@ -94,12 +94,7 @@ function init() {
    {
       for (var i = 0; i < board[j].length; ++i)
       {
-         if (j == 0)
-         {
-            board[i] = [];
-         }
-
-         board[i][j] = ++n % 8;
+         board[j][i] = ++n % 8;
       }
    }
       outputBoard();

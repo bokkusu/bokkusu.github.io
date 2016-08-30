@@ -18,7 +18,7 @@ main(); //Start the cycle.
 function update() {
   var curTime = var d = new Date().getTime();
   
-  if (curTime - lastFrame < 16) {
+  if (curTime - lastFrame < 500) {
     return;
   }
   

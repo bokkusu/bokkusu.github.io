@@ -112,7 +112,7 @@ function outputBoard() {
    var out = "";
    for (var j = 0; j < board.length; j++) {
       for (var i = 0; i < board[j].length; i++) {
-         out += board[i][j];
+         out += board[j][i];
          out += ' ';
       }
       out += '\n';

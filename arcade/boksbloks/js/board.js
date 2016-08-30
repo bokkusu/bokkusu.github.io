@@ -71,6 +71,8 @@ function init() {
    console.log("board[0].length=" + board[0].length);
    
    var n = 0;
+      outputBoard();
+
    for (var j = 0; j < 10; ++j)
    {
       for (var i = 0; i < 20; ++i)
@@ -83,6 +85,8 @@ function init() {
          board[i][j] = ++n % 8;
       }
    }
+      outputBoard();
+
 }
 
 function redraw() {
@@ -92,6 +96,7 @@ function redraw() {
 }
 
 function outputBoard() {
+   console.log("board=");
    var out = "";
    for (var j = 0; j < board.length; j++) {
       for (var i = 0; i < board[j].length; i++) {
@@ -132,7 +137,6 @@ function drawBoard(context, board, xOffset, yOffset) {
       for (var i = 0; i < board[j].length; i++) {
          var color = 'lightgrey';
          var fill = true;
-console.log("i,j=" + i + "," + j + "=" + board[i][j]);
          switch(board[i][j])
          {
             case 0:

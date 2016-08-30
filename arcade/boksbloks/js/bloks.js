@@ -51,7 +51,10 @@ function update() {
     {
       for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {
-          board[y+i][x+j] = 1;
+          if (piece[j][i] != 0)
+          {
+            board[y+i][x+j] = 1;
+          }
         }
       }
     }

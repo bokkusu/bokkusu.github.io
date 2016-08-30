@@ -42,7 +42,18 @@ function update() {
     y = y + 1;
     pieceXY = [x,y];
 
-    if ((y + piece.length) <= board.length)
+    var blocked = false;
+    loop1: for (var j = 0; j < piece.length; ++j) {
+      for (var i = 0; i < piece[j].length; ++i) {
+        if (piece[j][i] != 0 && board[y+j][x+i] != 0)
+        {
+          blocked = true;
+          break loop1;
+        }
+      }
+    }
+
+    if ((y + piece.length) <= board.length && !blocked)
     {
       y = y - 1;
     

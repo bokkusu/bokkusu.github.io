@@ -42,37 +42,46 @@ function update() {
     y = y + 1;
     pieceXY = [x,y];
 
-    var blocked = false;
-    loop1: for (var j = 0; j < piece.length; ++j) {
-      for (var i = 0; i < piece[j].length; ++i) {
-        if (piece[j][i] != 0 && board[y+j][x+i] != 0)
-        {
-          console.log("piece blocked");
-          blocked = true;
-          break loop1;
-        }
-      }
-    }
 
-    if ((y + piece.length) <= board.length && !blocked)
+
+    if ((y + piece.length) <= board.length)
     {
-      y = y - 1;
-    
-      for (var j = 0; j < piece.length; ++j) {
+      var blocked = false;
+      loop1: for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {
-          board[y+j][x+i] = 0;
+          if (piece[j][i] != 0 && board[y+j][x+i] != 0)
+          {
+            console.log("piece blocked");
+            blocked = true;
+            break loop1;
+          }
         }
       }
       
-      y = y + 1;
-    
-      for (var j = 0; j < piece.length; ++j) {
-        for (var i = 0; i < piece[j].length; ++i) {
-          if (piece[j][i] != 0)
-          {
-            board[y+j][x+i] = 1;
+      if (!blocked)
+      {
+        y = y - 1;
+      
+        for (var j = 0; j < piece.length; ++j) {
+          for (var i = 0; i < piece[j].length; ++i) {
+            board[y+j][x+i] = 0;
           }
         }
+        
+        y = y + 1;
+      
+        for (var j = 0; j < piece.length; ++j) {
+          for (var i = 0; i < piece[j].length; ++i) {
+            if (piece[j][i] != 0)
+            {
+              board[y+j][x+i] = 1;
+            }
+          }
+        }
+      }
+      else
+      {
+        piece = null;
       }
     }
     else

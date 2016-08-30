@@ -47,7 +47,7 @@ function update() {
     y = y + 1;
     pieceXY = [x,y];
 
-    if ((y + piece[0].length) < board[0].length)
+    if ((y + piece.length) < board.length)
     {
       for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {

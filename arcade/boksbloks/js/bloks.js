@@ -46,6 +46,16 @@ function update() {
 
     if ((y + piece.length) <= board.length)
     {
+      y = y - 1;
+    
+      for (var j = 0; j < piece.length; ++j) {
+        for (var i = 0; i < piece[j].length; ++i) {
+          board[y+j][x+i] = 0;
+        }
+      }
+      
+      y = y + 1;
+
       var blocked = false;
       loop1: for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {
@@ -60,27 +70,26 @@ function update() {
       
       if (!blocked)
       {
-        y = y - 1;
-      
-        for (var j = 0; j < piece.length; ++j) {
-          for (var i = 0; i < piece[j].length; ++i) {
-            board[y+j][x+i] = 0;
-          }
-        }
-        
-        y = y + 1;
-      
         for (var j = 0; j < piece.length; ++j) {
           for (var i = 0; i < piece[j].length; ++i) {
             if (piece[j][i] != 0)
             {
-              board[y+j][x+i] = 1;
+              board[y+j][x+i] = piece[j][i];
             }
           }
         }
       }
       else
       {
+        y = y - 1;
+        for (var j = 0; j < piece.length; ++j) {
+          for (var i = 0; i < piece[j].length; ++i) {
+            if (piece[j][i] != 0)
+            {
+              board[y+j][x+i] = piece[j][i];
+            }
+          }
+        }
         piece = null;
       }
     }

@@ -164,7 +164,6 @@ console.log("i,j=" + i + "," + j + "=" + board[i][j]);
                color = '#45788A';
                break;
          }
-        var color = 'lightgrey';
         drawCell(context, board, [i, j], xOffset, yOffset, color, 1, fill);
         //print text
         if (debug) {

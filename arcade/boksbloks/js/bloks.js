@@ -97,9 +97,9 @@ function getPiece() {
 }
 
 function zpiece() { return  [[1,1,0],[0,1,1]];}
-function spiece() { return  [[0,1,1],[1,1,0]];}
-function lpiece() { return  [[0,0,1],[1,1,1]];}
-function jpiece() { return  [[1,0,0],[1,1,1]];}
-function opiece() { return  [[1,1],[1,1]];}
-function ipiece() { return  [[1,1,1,1]];}
-function tpiece() { return  [[0,1,0],[1,1,1]];}
+function spiece() { return  [[0,2,2],[2,2,0]];}
+function lpiece() { return  [[0,0,3],[3,3,3]];}
+function jpiece() { return  [[4,0,0],[4,4,4]];}
+function opiece() { return  [[5,5],[5,5]];}
+function ipiece() { return  [[6,6,6,6]];}
+function tpiece() { return  [[0,7,0],[7,7,7]];}

@@ -75,9 +75,9 @@ function init() {
    {
       for (var i = 0; i < 10; ++i)
       {
-         if (i == 0)
+         if (j == 0)
          {
-            board[i] = [];
+            board[i][j] = [];
          }
 
          board[i][j] = ++n % 8;

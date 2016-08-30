@@ -135,7 +135,7 @@ function drawBoard(context, board, xOffset, yOffset) {
       for (var i = 0; i < board[j].length; i++) {
          var color = '#000000';
          var fill = true;
-console.out("i,j=" + i + "," + j + "=" + board[i][j]);
+console.log("i,j=" + i + "," + j + "=" + board[i][j]);
          switch(board[i][j])
          {
             case 0:

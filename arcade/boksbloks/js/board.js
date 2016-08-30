@@ -60,14 +60,6 @@ function init() {
    offsetX = (canvasW - drawW)/2;
    offsetY = (canvasH - drawH)/2;
    
-   board = new Array(20);
-   console.log(board);
-   for (var i = 0; i < board.length; ++i)
-   {
-      board[i] = new Array(10);
-   }
-
-   console.log(board);
    var tesX = drawW / board[0].length;
    square = new Square(tesX/2);
    
@@ -79,9 +71,9 @@ function init() {
    console.log("board[0].length=" + board[0].length);
    
    var n = 0;
-   for (var j = 0; j < board.length; ++j)
+   for (var j = 0; j < 20; ++j)
    {
-      for (var i = 0; i < board[j].length; ++i)
+      for (var i = 0; i < 10; ++i)
       {
          board[i][j] = ++n % 8;
       }

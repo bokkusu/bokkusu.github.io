@@ -5,7 +5,7 @@ window.main = function () {
   
   // Whatever your main loop needs to do.
   update();
-  drawBoard();
+  redraw();
 };
 
 main(); //Start the cycle.

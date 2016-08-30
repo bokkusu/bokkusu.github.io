@@ -53,7 +53,7 @@ function update() {
         for (var i = 0; i < piece[j].length; ++i) {
           if (piece[j][i] != 0)
           {
-            board[y+i][x+j] = 1;
+            board[y+j][x+i] = 1;
           }
         }
       }

@@ -53,6 +53,9 @@ function processInput() {
     var button = inputs.shift();
     if (button == 'left')
     {
+          var x = pieceXY[0];
+      var y = pieceXY[1];
+
       for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {
           if (piece[j][i] != 0)
@@ -62,6 +65,9 @@ function processInput() {
         }
       }
       pieceXY[0] = pieceXY[0] -1;
+          x = pieceXY[0];
+    y = pieceXY[1];
+
               for (var j = 0; j < piece.length; ++j) {
           for (var i = 0; i < piece[j].length; ++i) {
             if (piece[j][i] != 0)
@@ -73,6 +79,8 @@ function processInput() {
     }
     else if (button == 'right')
     {
+                var x = pieceXY[0];
+      var y = pieceXY[1];
       for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {
           if (piece[j][i] != 0)
@@ -82,6 +90,8 @@ function processInput() {
         }
       }
       pieceXY[0] = pieceXY[0] +1;
+                x = pieceXY[0];
+    y = pieceXY[1];
               for (var j = 0; j < piece.length; ++j) {
           for (var i = 0; i < piece[j].length; ++i) {
             if (piece[j][i] != 0)

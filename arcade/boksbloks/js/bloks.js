@@ -172,6 +172,12 @@ function update() {
       if (flash == 6)
       {
         flash = 0;
+        
+        for (var i = 0; i < clearedRows.length; ++i)
+        {
+            board.splice(clearedRows[i], 1);
+            board.unshift([0,0,0,0,0,0,0,0,0,0]);
+        }
         clearedRows = [];
       }
       else

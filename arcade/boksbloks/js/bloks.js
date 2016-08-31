@@ -45,7 +45,7 @@ main(); //Start the cycle.
 
 var flash = 0;
 var clearedRows = [];
-var inputs[];
+var inputs = [];
 
 function processInput() {
   for (var i = 0; i < inputs.length; ++i)

@@ -3,6 +3,26 @@ var pieceXY = [0,0];
 var lastUpdate = new Date().getTime();
 var lastFrame = new Date().getTime();
 
+board = [[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[1,1,1,1,1,1,1,1,1,1],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[3,3,3,3,3,3,3,3,3,3],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0]];
 
 // https://developer.mozilla.org/en-US/docs/Games/Anatomy
 
@@ -22,6 +42,9 @@ window.main = function () {
 
 main(); //Start the cycle.
 
+int flash = 0;
+var clearedRows = [];
+
 function update() {
   var curTime = new Date().getTime();
   
@@ -31,8 +54,21 @@ function update() {
 
   lastUpdate = curTime;
   
+    
+  if (flash != 0)
+  {
+    for (var j = 0; j < clearedRows.length; ++j)
+    {
+      for (var i = 0; i < board[j].length; ++i)
+      {
+        board[j][i] = 1;
+      }
+    }
+    return;
+  }
+  
+  
   //check for line clear
-  var clearedRows = [];
   
   for (var j = 0; j < board.length; ++j) {
     var hasSpace = false;
@@ -55,9 +91,14 @@ function update() {
     for (var i = 0; i < board[j].length; ++i)
     {
       board[j][i] = 0;
+      flash++;
+      if (flash == 3)
+      {
+        flash = 0;
+      }
     }
   }
-  
+
   if (piece == null) {
     piece = getPiece();
     

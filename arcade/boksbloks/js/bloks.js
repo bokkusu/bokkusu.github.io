@@ -3,6 +3,7 @@ var pieceXY = [0,0];
 var lastUpdate = new Date().getTime();
 var lastFrame = new Date().getTime();
 
+var inputs = [];
 board = [[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
@@ -45,7 +46,6 @@ main(); //Start the cycle.
 
 var flash = 0;
 var clearedRows = [];
-var inputs = [];
 
 function processInput() {
   for (var i = 0; i < inputs.length; ++i)

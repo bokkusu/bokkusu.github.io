@@ -61,7 +61,7 @@ function update() {
     {
       for (var i = 0; i < board[j].length; ++i)
       {
-        board[j][i] = 1;
+        board[clearedRows[j]][i] = 1;
       }
     }
     flash++;
@@ -91,7 +91,7 @@ function update() {
   {
     for (var i = 0; i < board[j].length; ++i)
     {
-      board[j][i] = 0;
+      board[clearedRows[j]][i] = 0;
     }
   }
   if (clearedRows.length > 0)

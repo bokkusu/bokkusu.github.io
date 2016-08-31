@@ -55,7 +55,7 @@ function update() {
   lastUpdate = curTime;
   
     
-  if (flash != 0)
+  if ((flash % 2) != 1)
   {
     for (var j = 0; j < clearedRows.length; ++j)
     {
@@ -64,6 +64,7 @@ function update() {
         board[j][i] = 1;
       }
     }
+    flash++;
     return;
   }
   
@@ -96,11 +97,14 @@ function update() {
   if (clearedRows.length > 0)
   {
       flash++;
-      if (flash == 3)
+      if (flash == 6)
       {
         flash = 0;
       }
-      return;
+      else
+      {
+        return;
+      }
 }
 
   if (piece == null) {

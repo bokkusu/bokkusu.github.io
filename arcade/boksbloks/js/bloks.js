@@ -30,6 +30,7 @@ window.main = function () {
   window.requestAnimationFrame( main );
   
   // Whatever your main loop needs to do.
+  processInput();
   update();
   
   var curTime = new Date().getTime();
@@ -44,6 +45,31 @@ main(); //Start the cycle.
 
 var flash = 0;
 var clearedRows = [];
+var inputs[];
+
+function processInput() {
+  for (var i = 0; i < inputs.length; ++i)
+  {
+    if (inputs[i] == 'left')
+    {
+      pieceXY[0] = pieceXY[0] -1;
+    }
+    else if (inputs[i] == 'right')
+    {
+      pieceXY[0] = pieceXY[0] +1;
+    }
+  }
+}
+
+window.onkeyup = function(e) {
+   var key = e.keyCode ? e.keyCode : e.which;
+
+   if (key == 38) {
+       inputs[inputs.length] = 'left';
+   }else if (key == 40) {
+       inputs[inputs.length] = 'right';
+   }
+}
 
 function update() {
   var curTime = new Date().getTime();

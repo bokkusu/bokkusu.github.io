@@ -64,9 +64,9 @@ function processInput() {
 window.onkeyup = function(e) {
    var key = e.keyCode ? e.keyCode : e.which;
 
-   if (key == 38) {
+   if (key == 37) {
        inputs[inputs.length] = 'left';
-   }else if (key == 40) {
+   }else if (key == 39) {
        inputs[inputs.length] = 'right';
    }
 }

@@ -91,13 +91,17 @@ function update() {
     for (var i = 0; i < board[j].length; ++i)
     {
       board[j][i] = 0;
+    }
+  }
+  if (clearedRows.length > 0)
+  {
       flash++;
       if (flash == 3)
       {
         flash = 0;
       }
-    }
-  }
+      return;
+}
 
   if (piece == null) {
     piece = getPiece();

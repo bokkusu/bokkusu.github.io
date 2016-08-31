@@ -42,7 +42,7 @@ window.main = function () {
 
 main(); //Start the cycle.
 
-int flash = 0;
+var flash = 0;
 var clearedRows = [];
 
 function update() {

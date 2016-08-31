@@ -50,7 +50,8 @@ var clearedRows = [];
 function processInput() {
   for (var i = 0; i < inputs.length; ++i)
   {
-    if (inputs[i] == 'left')
+    var button = inputs.shift();
+    if (button == 'left')
     {
       for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {
@@ -70,7 +71,7 @@ function processInput() {
           }
         }
     }
-    else if (inputs[i] == 'right')
+    else if (button == 'right')
     {
       for (var j = 0; j < piece.length; ++j) {
         for (var i = 0; i < piece[j].length; ++i) {

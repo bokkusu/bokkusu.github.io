@@ -52,11 +52,43 @@ function processInput() {
   {
     if (inputs[i] == 'left')
     {
+      for (var j = 0; j < piece.length; ++j) {
+        for (var i = 0; i < piece[j].length; ++i) {
+          if (piece[j][i] != 0)
+          {
+            board[y+j][x+i] = 0;
+          }
+        }
+      }
       pieceXY[0] = pieceXY[0] -1;
+              for (var j = 0; j < piece.length; ++j) {
+          for (var i = 0; i < piece[j].length; ++i) {
+            if (piece[j][i] != 0)
+            {
+              board[y+j][x+i] = piece[j][i];
+            }
+          }
+        }
     }
     else if (inputs[i] == 'right')
     {
+      for (var j = 0; j < piece.length; ++j) {
+        for (var i = 0; i < piece[j].length; ++i) {
+          if (piece[j][i] != 0)
+          {
+            board[y+j][x+i] = 0;
+          }
+        }
+      }
       pieceXY[0] = pieceXY[0] +1;
+              for (var j = 0; j < piece.length; ++j) {
+          for (var i = 0; i < piece[j].length; ++i) {
+            if (piece[j][i] != 0)
+            {
+              board[y+j][x+i] = piece[j][i];
+            }
+          }
+        }
     }
   }
 }

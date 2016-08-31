@@ -53,6 +53,7 @@ function processInput() {
     var button = inputs.shift();
     if (button == 'left')
     {
+      if (pieceXY[0] > 0){
           var x = pieceXY[0];
       var y = pieceXY[1];
 
@@ -75,10 +76,11 @@ function processInput() {
               board[y+j][x+i] = piece[j][i];
             }
           }
-        }
+        }}
     }
     else if (button == 'right')
     {
+      if (pieceXY[0] + piece[0].length < board[0].length){ 
                 var x = pieceXY[0];
       var y = pieceXY[1];
       for (var j = 0; j < piece.length; ++j) {
@@ -100,6 +102,7 @@ function processInput() {
             }
           }
         }
+      }
     }
   }
 }

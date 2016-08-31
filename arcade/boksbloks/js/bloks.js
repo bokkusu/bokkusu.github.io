@@ -100,6 +100,7 @@ function update() {
       if (flash == 6)
       {
         flash = 0;
+        clearedRows = [];
       }
       else
       {

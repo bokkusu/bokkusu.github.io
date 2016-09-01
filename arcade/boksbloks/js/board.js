@@ -1,4 +1,3 @@
-var debug = false;
 var square = null;
 var board = [[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
@@ -113,12 +112,12 @@ function redraw() {
 function outputBoard() {
    outputBoard(board);
 }
-function outputBoard(board) {
+function outputBoard(board2) {
    console.log("board=");
    var out = "";
-   for (var j = 0; j < board.length; j++) {
-      for (var i = 0; i < board[j].length; i++) {
-         out += board[j][i];
+   for (var j = 0; j < board2.length; j++) {
+      for (var i = 0; i < board2[j].length; i++) {
+         out += board2[j][i];
          out += ' ';
       }
       out += '\n';

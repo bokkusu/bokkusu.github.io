@@ -100,7 +100,7 @@ function init() {
    */
       outputBoard();
 
-outputBoard(getCopyOfBoard());
+outputBoard2(getCopyOfBoard());
 }
 
 function redraw() {
@@ -110,9 +110,9 @@ function redraw() {
 }
 
 function outputBoard() {
-   outputBoard(board);
+   outputBoard2(board);
 }
-function outputBoard(board2) {
+function outputBoard2(board2) {
    console.log("board=");
    var out = "";
    for (var j = 0; j < board2.length; j++) {

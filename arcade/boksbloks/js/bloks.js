@@ -52,7 +52,7 @@ var clearedRows = [];
 function processInput() {
     for (var i = 0; i < inputs.length; ++i) {
         var button = inputs.shift();
-        if (button == 'left') {
+        if (button == 'l') {
             if (piece != null && pieceXY[0] > 0) {
                 var x = pieceXY[0];
                 var y = pieceXY[1];
@@ -76,7 +76,7 @@ function processInput() {
                     }
                 }
             }
-        } else if (button == 'right') {
+        } else if (button == 'r') {
             if (piece != null && (pieceXY[0] + piece[0].length < board[0].length)) {
                 var x = pieceXY[0];
                 var y = pieceXY[1];
@@ -106,9 +106,9 @@ window.onkeyup = function(e) {
     var key = e.keyCode ? e.keyCode : e.which;
 
     if (key == 37) {
-        inputs[inputs.length] = 'left';
+        inputs[inputs.length] = 'l';
     } else if (key == 39) {
-        inputs[inputs.length] = 'right';
+        inputs[inputs.length] = 'r';
     }
 }
 
@@ -159,8 +159,10 @@ function update() {
         if (flash == 6) {
             flash = 0;
 
-            for (var i = 0; i < clearedRows.length; ++i) {
+            for (var i = clearedRows.length - 1; i >= 0; --i) {
                 board.splice(clearedRows[i], 1);
+            }
+            for (var i = 0; i < clearedRows.length; ++i) {
                 board.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
             }
             clearedRows = [];
@@ -257,6 +259,28 @@ function update() {
             piece = null;
         }
     }
+}
+
+function tryMovement(input)
+{
+    var newBoard = getCopyOfBoard();
+    
+    switch (input)
+    {
+        case 'u':
+            break;
+        case 'd':
+            break;
+        case 'l':
+            break;
+        case 'r':
+            break;
+        case 'a':
+            break;
+        case 'b':
+            break;
+    }
+    
 }
 
 function getPiece() {

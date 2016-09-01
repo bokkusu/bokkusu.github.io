@@ -146,6 +146,7 @@ function update() {
         if (!hasSpace) {
             //row j should clear
             clearedRows[clearedRows.length] = j;
+            console.log("row " + j + " should be cleared");
         }
     }
 

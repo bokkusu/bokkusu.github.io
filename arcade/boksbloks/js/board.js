@@ -1,3 +1,4 @@
+var debug = false;
 var square = null;
 var board = [[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],

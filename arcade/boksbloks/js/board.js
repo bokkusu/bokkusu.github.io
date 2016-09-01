@@ -125,17 +125,14 @@ function outputBoard(board) {
    console.log(out);
 }
 
-function getCopyOfBoard()
-{
+function getCopyOfBoard() {
     var newBoard = [];
     
-    for (var j = 0; j < board.length; ++j)
-    {
+    for (var j = 0; j < board.length; ++j) {
         newBoard[j] = [];
 
-        for (var i = 0; j < board[j].length; ++j)
-        {
-            newBoard[j][i] = board[j][i]l
+        for (var i = 0; i < board[j].length; ++i) {
+            newBoard[j][i] = board[j][i];
         }
     }
     

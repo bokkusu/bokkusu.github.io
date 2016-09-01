@@ -158,11 +158,12 @@ function update() {
         flash++;
         if (flash == 6) {
             flash = 0;
-
+            var numRemoved = 0;
             for (var i = clearedRows.length - 1; i >= 0; --i) {
                 board.splice(clearedRows[i], 1);
+                numRemoved++;
             }
-            for (var i = 0; i < clearedRows.length; ++i) {
+            for (var i = 0; i < numRemoved; ++i) {
                 board.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
             }
             clearedRows = [];

@@ -115,7 +115,7 @@ window.onkeyup = function(e) {
 function update() {
     var curTime = new Date().getTime();
 
-    if ((curTime - lastUpdate) < 70) {
+    if ((curTime - lastUpdate) < 100) {
         return;
     }
 

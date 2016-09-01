@@ -100,6 +100,7 @@ function init() {
    */
       outputBoard();
 
+outputBoard(getCopyOfBoard());
 }
 
 function redraw() {

@@ -145,8 +145,16 @@ function update() {
         }
         if (!hasSpace) {
             //row j should clear
-            clearedRows[clearedRows.length] = j;
-            console.log("row " + j + " should be cleared");
+            var jInArray = false;
+            for (var i = 0; i < clearedRows.length; ++i) {
+                if (clearedRows[i]==j) {
+                    jInArray = true;
+                }
+            }
+            if (!jInArray) {
+                clearedRows[clearedRows.length] = j;
+                console.log("row " + j + " should be cleared");
+            }
         }
     }
 

@@ -106,7 +106,6 @@ outputBoard2(getCopyOfBoard());
 function redraw() {
    canvas.width = canvas.width;
    drawBoard(context, board, offsetX, offsetY);
-   outputBoard();
 }
 
 function outputBoard() {

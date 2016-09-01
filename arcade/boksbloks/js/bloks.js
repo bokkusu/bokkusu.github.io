@@ -288,6 +288,7 @@ function getPiece() {
     var min = Math.ceil(0);
     var max = Math.floor(7);
     var piece = Math.floor(Math.random() * (max - min)) + min;
+    return opiece();
     switch (piece) {
         case 0:
             return zpiece();

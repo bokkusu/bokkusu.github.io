@@ -164,7 +164,7 @@ function update() {
                 numRemoved++;
             }
             for (var i = 0; i < numRemoved; ++i) {
-                board.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                //board.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
             }
             clearedRows = [];
         } else {

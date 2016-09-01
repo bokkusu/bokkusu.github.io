@@ -109,6 +109,9 @@ function redraw() {
 }
 
 function outputBoard() {
+   outputBoard(board);
+}
+function outputBoard(board) {
    console.log("board=");
    var out = "";
    for (var j = 0; j < board.length; j++) {
@@ -119,6 +122,25 @@ function outputBoard() {
       out += '\n';
    }
    console.log(out);
+}
+
+function getCopyOfBoard()
+{
+    var newBoard = [];
+    
+    for (var j = 0; j < board.length; ++j)
+    {
+        newBoard[j] = [];
+
+        for (var i = 0; j < board[j].length; ++j)
+        {
+            newBoard[j][i] = board[j][i]l
+        }
+    }
+    
+    newBoard[1][1] = 1;
+    
+    return newBoard;
 }
 
 function drawCell(context, board, coords, xOffset, yOffset, color, line, fill) {

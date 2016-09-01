@@ -162,9 +162,11 @@ function update() {
             for (var i = clearedRows.length - 1; i >= 0; --i) {
                 board.splice(clearedRows[i], 1);
                 numRemoved++;
+                console.log("removed " + clearedRows[i]);
             }
             for (var i = 0; i < numRemoved; ++i) {
-                //board.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                board.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                console.log("added row");
             }
             clearedRows = [];
         } else {
@@ -288,7 +290,9 @@ function getPiece() {
     var min = Math.ceil(0);
     var max = Math.floor(7);
     var piece = Math.floor(Math.random() * (max - min)) + min;
-    return opiece();
+    return [
+        [6, 6, 6, 6, 6]
+    ];
     switch (piece) {
         case 0:
             return zpiece();

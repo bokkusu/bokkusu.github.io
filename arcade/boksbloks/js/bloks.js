@@ -1,5 +1,6 @@
 var piece = null;
 var pieceXY = [0, 0];
+var r = 0;
 var lastUpdate = new Date().getTime();
 var lastFrame = new Date().getTime();
 
@@ -57,9 +58,9 @@ function processInput() {
                 var x = pieceXY[0];
                 var y = pieceXY[1];
 
-                for (var j = 0; j < piece.length; ++j) {
-                    for (var i = 0; i < piece[j].length; ++i) {
-                        if (piece[j][i] != 0) {
+                for (var j = 0; j < piece[r].length; ++j) {
+                    for (var i = 0; i < piece[r][j].length; ++i) {
+                        if (piece[r][j][i] != 0) {
                             board[y + j][x + i] = 0;
                         }
                     }
@@ -68,21 +69,21 @@ function processInput() {
                 x = pieceXY[0];
                 y = pieceXY[1];
 
-                for (var j = 0; j < piece.length; ++j) {
-                    for (var i = 0; i < piece[j].length; ++i) {
-                        if (piece[j][i] != 0) {
-                            board[y + j][x + i] = piece[j][i];
+                for (var j = 0; j < piece[r].length; ++j) {
+                    for (var i = 0; i < piece[r][j].length; ++i) {
+                        if (piece[r][j][i] != 0) {
+                            board[y + j][x + i] = piece[r][j][i];
                         }
                     }
                 }
             }
         } else if (button == 'r') {
-            if (piece != null && (pieceXY[0] + piece[0].length < board[0].length)) {
+            if (piece != null && (pieceXY[0] + piece[r][0].length < board[0].length)) {
                 var x = pieceXY[0];
                 var y = pieceXY[1];
-                for (var j = 0; j < piece.length; ++j) {
-                    for (var i = 0; i < piece[j].length; ++i) {
-                        if (piece[j][i] != 0) {
+                for (var j = 0; j < piece[r].length; ++j) {
+                    for (var i = 0; i < piece[r][j].length; ++i) {
+                        if (piece[r][j][i] != 0) {
                             board[y + j][x + i] = 0;
                         }
                     }
@@ -90,14 +91,16 @@ function processInput() {
                 pieceXY[0] = pieceXY[0] + 1;
                 x = pieceXY[0];
                 y = pieceXY[1];
-                for (var j = 0; j < piece.length; ++j) {
-                    for (var i = 0; i < piece[j].length; ++i) {
-                        if (piece[j][i] != 0) {
-                            board[y + j][x + i] = piece[j][i];
+                for (var j = 0; j < piece[r].length; ++j) {
+                    for (var i = 0; i < piece[r][j].length; ++i) {
+                        if (piece[r][j][i] != 0) {
+                            board[y + j][x + i] = piece[r][j][i];
                         }
                     }
                 }
             }
+        } else if (button == 'z') {
+            r = (r + 1)%4;
         }
     }
 }
@@ -109,6 +112,8 @@ window.onkeyup = function(e) {
         inputs[inputs.length] = 'l';
     } else if (key == 39) {
         inputs[inputs.length] = 'r';
+    } else if (key == 90) {
+        inputs[inputs.length] = 'z';
     }
 }
 
@@ -200,12 +205,12 @@ function update() {
 
 
 
-        if ((y + piece.length) <= board.length) {
+        if ((y + piece[r].length) <= board.length) {
             y = y - 1;
 
-            for (var j = 0; j < piece.length; ++j) {
-                for (var i = 0; i < piece[j].length; ++i) {
-                    if (piece[j][i] != 0) {
+            for (var j = 0; j < piece[r].length; ++j) {
+                for (var i = 0; i < piece[r][j].length; ++i) {
+                    if (piece[r][j][i] != 0) {
                         board[y + j][x + i] = 0;
                     }
                 }
@@ -214,9 +219,9 @@ function update() {
             y = y + 1;
 
             var blocked = false;
-            loop1: for (var j = 0; j < piece.length; ++j) {
-                for (var i = 0; i < piece[j].length; ++i) {
-                    if (piece[j][i] != 0 && board[y + j][x + i] != 0) {
+            loop1: for (var j = 0; j < piece[r].length; ++j) {
+                for (var i = 0; i < piece[r][j].length; ++i) {
+                    if (piece[r][j][i] != 0 && board[y + j][x + i] != 0) {
                         console.log("piece blocked");
                         blocked = true;
                         break loop1;
@@ -225,19 +230,19 @@ function update() {
             }
 
             if (!blocked) {
-                for (var j = 0; j < piece.length; ++j) {
-                    for (var i = 0; i < piece[j].length; ++i) {
-                        if (piece[j][i] != 0) {
-                            board[y + j][x + i] = piece[j][i];
+                for (var j = 0; j < piece[r].length; ++j) {
+                    for (var i = 0; i < piece[r][j].length; ++i) {
+                        if (piece[r][j][i] != 0) {
+                            board[y + j][x + i] = piece[r][j][i];
                         }
                     }
                 }
             } else {
                 y = y - 1;
-                for (var j = 0; j < piece.length; ++j) {
-                    for (var i = 0; i < piece[j].length; ++i) {
-                        if (piece[j][i] != 0) {
-                            board[y + j][x + i] = piece[j][i];
+                for (var j = 0; j < piece[r].length; ++j) {
+                    for (var i = 0; i < piece[r][j].length; ++i) {
+                        if (piece[r][j][i] != 0) {
+                            board[y + j][x + i] = piece[r][j][i];
                         }
                     }
                 }
@@ -299,9 +304,8 @@ function getPiece() {
     var min = Math.ceil(0);
     var max = Math.floor(7);
     var piece = Math.floor(Math.random() * (max - min)) + min;
-    return [
-        [6, 6, 6, 6, 6]
-    ];
+    r = 0;
+
     switch (piece) {
         case 0:
             return zpiece();
@@ -322,48 +326,63 @@ function getPiece() {
 
 function zpiece() {
     return [
-        [1, 1, 0],
-        [0, 1, 1]
+        [[1,1,0],[0,1,1],[0,0,0]],
+        [[0,0,1],[0,1,1],[0,1,0]],
+        [[0,0,0],[1,1,0],[0,1,1]],
+        [[0,1,0],[1,1,0],[1,0,0]]
     ];
 }
 
 function spiece() {
     return [
-        [0, 2, 2],
-        [2, 2, 0]
+        [[0,1,1],[1,1,0],[0,0,0]],
+        [[0,1,0],[0,1,1],[0,0,1]],
+        [[0,0,0],[0,1,1],[1,1,0]],
+        [[1,0,0],[1,1,0],[0,1,0]]
     ];
 }
 
 function lpiece() {
     return [
-        [0, 0, 3],
-        [3, 3, 3]
+        [[0,0,1],[1,1,1],[0,0,0]],
+        [[0,1,0],[0,1,0],[0,1,1]],
+        [[0,0,0],[1,1,1],[1,0,0]],
+        [[1,1,0],[0,1,0],[0,1,0]]
     ];
 }
 
 function jpiece() {
     return [
-        [4, 0, 0],
-        [4, 4, 4]
+        [[1,0,0],[1,1,1],[0,0,0]],
+        [[0,1,1],[0,1,0],[0,1,0]],
+        [[0,0,0],[1,1,1],[0,0,1]],
+        [[0,1,0],[0,1,0],[1,1,0]]
     ];
 }
 
 function opiece() {
     return [
-        [5, 5],
-        [5, 5]
+        [[0,1,1,0],[0,1,1,0],[0,0,0,0]],
+        [[0,1,1,0],[0,1,1,0],[0,0,0,0]],
+        [[0,1,1,0],[0,1,1,0],[0,0,0,0]],
+        [[0,1,1,0],[0,1,1,0],[0,0,0,0]]
     ];
 }
 
 function ipiece() {
     return [
-        [6, 6, 6, 6]
+        [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+        [[0,0,1,0],[0,0,1,0],[0,0,1,0],[0,0,1,0]],
+        [[0,0,0,0],[0,0,0,0],[1,1,1,1],[0,0,0,0]],
+        [[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0]],
     ];
 }
 
 function tpiece() {
     return [
-        [0, 7, 0],
-        [7, 7, 7]
+        [[0,1,0],[1,1,1],[0,0,0]],
+        [[0,1,0],[0,1,1],[0,1,0]],
+        [[0,0,0],[1,1,1],[0,1,0]],
+        [[0,1,0],[1,1,0],[0,1,0]]
     ];
 }

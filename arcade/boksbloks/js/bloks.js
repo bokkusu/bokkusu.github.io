@@ -1,5 +1,7 @@
 var piece = null;
 var pieceXY = [0, 0];
+var x = 0;
+var y = 0;
 var r = 0;
 var lastUpdate = new Date().getTime();
 var lastFrame = new Date().getTime();
@@ -197,6 +199,14 @@ function update() {
 
         pieceXY = [Math.floor(Math.random() * (max - min)) + min, 0];
     } else {
+
+        var valid = tryMovement(piece, r, pieceXY[0],  pieceXY[1] + 1);
+
+        if (valid)
+        {
+            lockPiece(piece, r, pieceXY[0], pieceXY[1]+1);
+        }
+
         var x = pieceXY[0];
         var y = pieceXY[1];
 
@@ -278,26 +288,48 @@ function update() {
     }
 }
 
-function tryMovement(input)
-{
+function isLocked() {
+    return !tryMovement(piece, r, pieceXY[0], pieceXY[1]+1);
+}
+
+function tryMovement(newPiece, newR, newX, newY) {
     var newBoard = getCopyOfBoard();
     
-    switch (input)
-    {
-        case 'u':
-            break;
-        case 'd':
-            break;
-        case 'l':
-            break;
-        case 'r':
-            break;
-        case 'a':
-            break;
-        case 'b':
-            break;
+    // try to lay newPiece onto the board
+    for (var j = 0; j < newPiece[newR].length; ++j) {
+        for (var i = 0; i < newPiece[newR][j].length; ++i) {
+            if (newPiece[newR][j][i] != 0) {
+                var posY = newY + j;
+                var posX = newX + i;
+
+                if (posY >= 0 
+                    && posX >= 0 
+                    && posY < newBoard.length 
+                    && posX < newBoard[posY].length 
+                    && newBoard[posY][posX] == 0) {
+                    newBoard[newY + j][newX + i] = newPiece[newR][j][i];
+                } else {
+                    return false;
+                }
+            }
+        }
     }
-    
+
+    return true;
+}
+
+function lockPiece(newPiece, newR, newX, newY)
+{
+    for (var j = 0; j < newPiece[newR].length; ++j) {
+        for (var i = 0; i < newPiece[newR][j].length; ++i) {
+            if (newPiece[newR][j][i] != 0) {
+                var posY = newY + j;
+                var posX = newX + i;
+
+                board[newY + j][newX + i] = newPiece[newR][j][i];
+            }
+        }
+    }
 }
 
 function getPiece() {

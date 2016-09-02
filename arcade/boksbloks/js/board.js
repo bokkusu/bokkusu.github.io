@@ -98,9 +98,7 @@ function init() {
       }
    }
    */
-      outputBoard();
-
-outputBoard2(getCopyOfBoard());
+    outputBoard();
 }
 
 function redraw() {
